@@ -1,0 +1,53 @@
+
+# Q7: Original vs Redesigned String Building
+
+import time
+
+# Original method
+def original_method(items):
+
+    text = ""
+
+    for item in items:
+        text += item + ";"
+
+    return text
+
+
+# Redesigned method
+def redesigned_method(items):
+
+    return ";".join(items) + ";"
+
+
+# Testing different input sizes
+sizes = [1000, 10000, 200000]
+
+for size in sizes:
+
+    items = [f"Item{i}:Rs{i % 50}" for i in range(size)]
+
+    # Original execution
+    start = time.perf_counter()
+
+    original = original_method(items)
+
+    original_time = time.perf_counter() - start
+
+    # Redesigned execution
+    start = time.perf_counter()
+
+    redesigned = redesigned_method(items)
+
+    redesigned_time = time.perf_counter() - start
+
+    print("\nInput Size:", size)
+
+    print("Original Time:", round(original_time, 5))
+    print("Redesigned Time:", round(redesigned_time, 5))
+
+    print("Same Output:", original == redesigned)
+
+    if redesigned_time > 0:
+        improvement = original_time / redesigned_time
+        print("Speed Improvement:", round(improvement, 2), "times")
