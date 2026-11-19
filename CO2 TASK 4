@@ -1,0 +1,54 @@
+
+# Q4: String Building Performance Comparison
+
+import time
+
+def build_plus(items):
+    text = ""
+
+    for item in items:
+        text += item + ";"
+
+    return text
+
+
+def build_join(items):
+    return ";".join(items) + ";"
+
+
+def build_fstring(items):
+    text = ""
+
+    for i, item in enumerate(items):
+        text += f"{item};"
+
+    return text
+
+
+sizes = [1000, 10000, 200000]
+
+for size in sizes:
+
+    items = [f"Item{i}:Rs{i % 50}" for i in range(size)]
+
+    print("\nNumber of items:", size)
+
+    # Plus method
+    start = time.perf_counter()
+    a = build_plus(items)
+    plus_time = time.perf_counter() - start
+
+    # Join method
+    start = time.perf_counter()
+    b = build_join(items)
+    join_time = time.perf_counter() - start
+
+    # F-string method
+    start = time.perf_counter()
+    c = build_fstring(items)
+    fstring_time = time.perf_counter() - start
+
+    print("Same output:", a == b == c)
+    print("Plus time:", round(plus_time, 4), "seconds")
+    print("Join time:", round(join_time, 4), "seconds")
+    print("F-string time:", round(fstring_time, 4), "seconds")
