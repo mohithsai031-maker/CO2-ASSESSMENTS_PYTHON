@@ -1,0 +1,52 @@
+
+# Q1: Electricity Subsidy Eligibility
+
+households = [
+    (100, False, False),
+    (101, True, False),
+    (101, False, False),
+    (150, True, False),
+    (200, True, False),
+    (201, False, False),
+    (250, False, True),
+    (300, True, True)
+]
+
+print("SEPARATE IF STATEMENTS")
+
+for units, ration, elderly in households:
+
+    results = []
+
+    if units <= 100:
+        results.append("Full Subsidy")
+
+    if 101 <= units <= 200 and ration:
+        results.append("Partial Subsidy")
+
+    if units > 200 and elderly:
+        results.append("Special Subsidy")
+
+    if len(results) == 0:
+        results.append("No Subsidy")
+
+    print(units, ration, elderly, ":", results)
+
+
+print("\nIF-ELIF-ELSE STATEMENTS")
+
+for units, ration, elderly in households:
+
+    if units <= 100:
+        result = "Full Subsidy"
+
+    elif 101 <= units <= 200 and ration:
+        result = "Partial Subsidy"
+
+    elif units > 200 and elderly:
+        result = "Special Subsidy"
+
+    else:
+        result = "No Subsidy"
+
+    print(units, ration, elderly, ":", result)
