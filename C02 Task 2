@@ -1,0 +1,32 @@
+
+# Q2: OTP Verification Using While Loop
+
+correct_otp = "123456"
+attempts = 0
+max_attempts = 3
+verified = False
+
+while attempts < max_attempts:
+
+    otp = input("Enter OTP: ")
+
+    if otp == "":
+        print("Blank entry! Try again.")
+        continue
+
+    attempts += 1
+
+    if otp == correct_otp:
+        print("OTP Verified Successfully!")
+        verified = True
+        break
+
+    else:
+        print("Incorrect OTP!")
+        print("Attempts remaining:", max_attempts - attempts)
+
+else:
+    print("Account locked for 30 minutes.")
+
+if verified:
+    print("Login Successful")
